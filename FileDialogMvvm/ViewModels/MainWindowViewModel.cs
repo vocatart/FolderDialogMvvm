@@ -21,9 +21,9 @@ namespace FileDialogMvvm.ViewModels
 
         private async Task OpenFolderAsync()
         {
-            var fileName = await ShowOpenFolderDialog.Handle(Unit.Default);
+            var result = await ShowOpenFolderDialog.Handle(Unit.Default);
 
-            if (fileName is object)
+            if (result is object)
             {
                 // Put your logic for opening file here.
             }

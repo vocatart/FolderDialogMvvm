@@ -31,8 +31,8 @@ namespace FileDialogMvvm.Views
         private async Task ShowOpenFolderDialog(InteractionContext<Unit, string?> interaction)
         {
             var dialog = new OpenFolderDialog();
-            var fileNames = await dialog.ShowAsync(this);
-            interaction.SetOutput(fileNames);
+            var result = await dialog.ShowAsync(this);
+            interaction.SetOutput(result);
         }
     }
 }
