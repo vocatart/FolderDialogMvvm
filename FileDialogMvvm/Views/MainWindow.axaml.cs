@@ -20,7 +20,7 @@ namespace FileDialogMvvm.Views
             this.AttachDevTools();
 #endif
             // When the window is activated, registers a handler for the ShowOpenFileDialog interaction.
-            this.WhenActivated(d => d(ViewModel.ShowOpenFileDialog.RegisterHandler(ShowOpenFileDialog)));
+            this.WhenActivated(d => d(ViewModel.ShowOpenFolderDialog.RegisterHandler(ShowOpenFolderDialog)));
         }
 
         private void InitializeComponent()
@@ -28,11 +28,11 @@ namespace FileDialogMvvm.Views
             AvaloniaXamlLoader.Load(this);
         }
 
-        private async Task ShowOpenFileDialog(InteractionContext<Unit, string?> interaction)
+        private async Task ShowOpenFolderDialog(InteractionContext<Unit, string?> interaction)
         {
-            var dialog = new OpenFileDialog();
+            var dialog = new OpenFolderDialog();
             var fileNames = await dialog.ShowAsync(this);
-            interaction.SetOutput(fileNames.FirstOrDefault());
+            interaction.SetOutput(fileNames);
         }
     }
 }

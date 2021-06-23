@@ -10,18 +10,18 @@ namespace FileDialogMvvm.ViewModels
         public MainWindowViewModel()
         {
             // The OpenFile command is bound to a button/menu item in the UI.
-            OpenFile = ReactiveCommand.CreateFromTask(OpenFileAsync);
+            OpenFolder = ReactiveCommand.CreateFromTask(OpenFolderAsync);
 
             // The ShowOpenFileDialog interaction requests the UI to show the file open dialog.
-            ShowOpenFileDialog = new Interaction<Unit, string?>();
+            ShowOpenFolderDialog = new Interaction<Unit, string?>();
         }
 
-        public ReactiveCommand<Unit, Unit> OpenFile { get; }
-        public Interaction<Unit, string?> ShowOpenFileDialog { get; }
+        public ReactiveCommand<Unit, Unit> OpenFolder { get; }
+        public Interaction<Unit, string?> ShowOpenFolderDialog { get; }
 
-        private async Task OpenFileAsync()
+        private async Task OpenFolderAsync()
         {
-            var fileName = await ShowOpenFileDialog.Handle(Unit.Default);
+            var fileName = await ShowOpenFolderDialog.Handle(Unit.Default);
 
             if (fileName is object)
             {
